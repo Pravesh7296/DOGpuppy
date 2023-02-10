@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog</title>
+    <style>
+        img{
+            width: 60%;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="cont">
+
+</div>
+</body>
+</html>
+<script>
+    
+    
+    let house=[{image:"./image/c1.jpg",name:"puppy-1",bred:"jarman",Likes:0},{image:"./image/c1.jpg",name:"puppy-2",bred:"pitbul",Likes:0},{image:"./image/c1.jpg",name:"puppy-3",bred:"husky",Likes:0},{image:"./image/c1.jpg",name:"puppy-4",bred:"dogg",Likes:0}]
+
+    Lsdata=JSON.parse(localStorage.getItem("pupies"))
+    if(Lsdata==null){
+        Lsdata=house
+    
+    }
+    
+  dis(Lsdata)
+cont=document.getElementById("cont")
+function dis(data){
+for(let i=0;i<data.length;i++){
+    div=document.createElement("div")
+    imgel=document.createElement("img")
+    namel=document.createElement("h2")
+    breed=document.createElement("h1")
+    likel=document.createElement("p")
+    imgel.setAttribute("src",data[i].image)
+    namel.innerHTML=data[i].name
+    breed.innerHTML=data[i].bred
+    likel.innerHTML=data[i].Likes
+    Likebutton=document.createElement("button")
+    Likebutton.innerHTML="Like"
+    DisLikebutton=document.createElement("button")
+    DisLikebutton.innerHTML="DisLike"
+
+    Likebutton.addEventListener("click",function (){
+                data[i].Likes+=1
+            
+    localStorage.setItem("pupies",JSON.stringify(data))
+      
+    
+
+})
+DisLikebutton.addEventListener("click",function (){
+         data[i].Likes-=1
+    localStorage.setItem("pupies",JSON.stringify(data))
+
+})
+
+    div.append(imgel,namel,breed,likel,Likebutton,DisLikebutton)
+    cont.append(div)
+
+}
+}
+
+
+</script>
